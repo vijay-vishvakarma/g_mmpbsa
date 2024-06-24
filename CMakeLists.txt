@@ -4,6 +4,7 @@
 # Authors: Rashmi Kumari and Andrew Lynn
 # Contribution: Rajendra Kumar
 # Contribution: Ievgen Sliusar
+# Contribution: Vijay Vishvakarma, Arambh Mani
 #
 # Copyright (C) 2013-2016 Rashmi Kumari and Andrew Lynn
 #
@@ -36,7 +37,7 @@
 #
 
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
 project(g_mmpbsa)
 
 set(g_mmpbsa_MAJOR_VERSION 1)

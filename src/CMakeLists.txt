@@ -312,7 +312,7 @@ endif()
 ###### GROMACS-20xx: Compiling and linking Without APBS ######
 ##############################################################
 if(EXT_APBS AND HAVE_GROMACS2016)
-	add_executable(g_mmpbsa GMX2K/main.cxx GMX2K/g_mmpbsa.h GMX2K/energy_mm.cxx GMX2K/InputPBSA.cxx GMX2K/nsc.cxx GMX2K/PbsaPrep.cxx GMX2K/psize.cxx GMX2K/radius.cxx GMX2K/extrn_apbs.cxx GMX2K/ported/readinp.cxx GMX2K/ported/warninp.cxx ExtractData.c ExtractData.h)
+	add_executable(g_mmpbsa GMX2K24/main.cxx GMX2K24/g_mmpbsa.h GMX2K24/energy_mm.cxx GMX2K24/InputPBSA.cxx GMX2K24/nsc.cxx GMX2K24/PbsaPrep.cxx GMX2K24/psize.cxx GMX2K24/radius.cxx GMX2K24/extrn_apbs.cxx GMX2K24/ported/readinp.cxx GMX2K24/ported/warninp.cxx ExtractData.c ExtractData.h)
 	SET_SOURCE_FILES_PROPERTIES(ExtractData.c PROPERTIES LANGUAGE CXX)
 	#SET_TARGET_PROPERTIES(g_mmpbsa PROPERTIES LINKER_LANGUAGE CXX)
 	target_link_libraries(g_mmpbsa ${GROMACS_LIBRARIES})
@@ -320,16 +320,21 @@ endif()
 ##############################################################
 
 
+
+
 ##############################################################
 ###### GROMACS-2020 and newer: do header fixups         ######
 ##############################################################
 if(HAVE_GROMACS2016)
 	include(FixupHeader)
-	set(FIXUP_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/GMX2K/fixups)
+	# Include directories
+	include_directories(${GROMACS_INCLUDE_DIR})
+	set(FIXUP_INCLUDE ${CMAKE_CURRENT_SOURCE_DIR}/GMX2K24/fixups)
 	set(CMAKE_REQUIRED_INCLUDES "${GROMACS_INCLUDE_DIRS}")
 	FixupHeaderCXX("gromacs/commandline/cmdlineinit.h")
 	FixupHeaderCXX("gromacs/commandline/filenm.h")
 	FixupHeaderCXX("gromacs/commandline/pargs.h")
+	FixupHeaderCXX("gromacs/commandline/cmdlineprogramcontext.h")
 	FixupHeaderCXX("gromacs/fileio/confio.h")
 	FixupHeaderCXX("gromacs/fileio/oenv.h")
 	FixupHeaderCXX("gromacs/fileio/filetypes.h")
@@ -337,6 +342,7 @@ if(HAVE_GROMACS2016)
 	FixupHeaderCXX("gromacs/fileio/warninp.h")
 	FixupHeaderCXX("gromacs/fileio/xvgr.h")
 	FixupHeaderCXX("gromacs/math/vec.h")
+	FixupHeaderCXX("gromacs/math/multidimarray.h")
 	FixupHeaderCXX("gromacs/pbcutil/pbc.h")
 	FixupHeaderCXX("gromacs/pbcutil/rmpbc.h")
 	FixupHeaderCXX("gromacs/topology/index.h")
@@ -346,13 +352,22 @@ if(HAVE_GROMACS2016)
 	FixupHeaderCXX("gromacs/utility/exceptions.h")
 	FixupHeaderCXX("gromacs/utility/fatalerror.h")
 	FixupHeaderCXX("gromacs/utility/futil.h")
-endif()
-##############################################################
+	FixupHeaderCXX("gromacs/mdspan/mdspan.h")
+	FixupHeaderCXX("gromacs/mdspan/accessor_policy.h")
+	FixupHeaderCXX("gromacs/mdspan/extents.h")
+	FixupHeaderCXX("gromacs/mdspan/layouts.h")
+	FixupHeaderCXX("gromacs/mdspan/extensions.h")
+	FixupHeaderCXX("gromacs/legacyheaders/warninp.h")
 
+endif()
 
 ################## energy2bfac ###############################
+
+
+
 if(HAVE_GROMACS2016)
-	add_executable(energy2bfac GMX2K/energy2bfac.cxx)
+	# add_executable(energy2bfac GMX2K/energy2bfac.cxx g_mmpbsa GMX2K24/main.cxx GMX2K24/InputPBSA.cxx GMX2K24/ported/readinp.cxx)
+	add_executable(energy2bfac GMX2K24/energy2bfac.cxx)
 	target_link_libraries(energy2bfac ${GROMACS_LIBRARIES})
 elseif(NOT HAVE_GROMACS50 AND NOT HAVE_GROMACS51)
 	add_executable(energy2bfac GMX46/energy2bfac.c)
