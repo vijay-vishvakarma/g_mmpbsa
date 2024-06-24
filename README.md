@@ -30,9 +30,9 @@ The output from the tool is used further as input in python scripts which is pro
 
 *   It is implemented through open source software [GROMACS][GROMACS] and [APBS][APBS], making it accessible to large number of users.
 
-*   Supports **GROMACS 4.5.x**, **4.6.x**, **5.0.x**, **5.1.x**, **2016.x**, **2018.x** and **2019.x** versions.
+*   Supports **GROMACS 4.5.x**, **4.6.x**, **5.0.x**, **5.1.x**, **2016.x**, **2018.x**, **2019.x**, **2020.x**, **2021.x**, **2022.x**, **2023.x**, and **2024.x** versions.
 
-*   Supports **APBS 1.2.x**, **1.3.x** and **1.4.x** versions
+*   Supports **APBS 1.2.x**, **1.3.x**, **1.4.x** and **3.x** versions
 
 *   Inherits APBS capability of parallel computation using **OpenMP**. See details [here](http://rashmikumari.github.io/g_mmpbsa/How-to-Run.html#openmp).
 
