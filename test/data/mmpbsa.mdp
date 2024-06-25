@@ -75,7 +75,7 @@ PBsolver 	= lpbe
 ;APBS kwywords for Apolar/Non-polar solvation calculation
 ;========================================================
 ;Non-polar solvation calculation: "yes" or "no"
-apolar		= no
+apolar		= yes
 
 ;Repulsive contribution to Non-polar 
 ;===SASA model ====
@@ -87,7 +87,7 @@ gamma           = 0.0226778
 sasrad          = 1.4
 
 ;Offset (c) kJ/mol
-sasaconst       = 3.84928
+sasaconst       = 3.84982
 
 ;===SAV model===
 ;Pressure kJ/(mol A^3)
