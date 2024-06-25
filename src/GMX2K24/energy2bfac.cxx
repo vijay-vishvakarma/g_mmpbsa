@@ -60,6 +60,7 @@ void CopyRightMsg()	{
 			"                                                                        ",
 			"               Authors: Rashmi Kumari and Andrew Lynn                   ",
 			"               Contribution: Rajendra Kumar                             ",
+			"		Contribution: Ievgen Sliusar				 ",
 			"               Contribution: Vijay Vishvakarma, Arambh mani             ",
 			"                                                                        ",
 			"      Copyright (C) 2013 - 2016 Rashmi Kumari and Andrew Lynn           ",
